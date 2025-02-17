@@ -1,11 +1,10 @@
-// App.js
 import { useState } from "react";
 import "./App.css";
-/* import About from "./components/About"; */
+import About from "./components/About";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import Alert from "./components/Alert";
-/* import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; */
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -49,31 +48,31 @@ function App() {
 
   return (
     <div>
-{/*     <Router> */}
-      <Navbar
-        title="TextUtils"
-        about="About Us"
-        mode={mode}
-        toggleMode={toggleMode}
-        changeBackgroundColor={changeBackgroundColor}
-      />
-      <Alert alert={alert} />
-      <div className="container my-3">
-{/*         <Routes> */}
-{/*           <Route path="/about" element={<About />} /> */}
-          {/* <Route */}
-           { /* path="/"*/}
-          {/* element={ */ }
-              <TextForm
-                heading="Enter the text to analyse below"
-                showAlert={showAlert}
-                mode={mode}
-              />
-         {  /*  } */}
-        {/*   /> */}
-        {/* </Routes> */}
-      </div>
-    {/* </Router> */}
+      <Router>
+        <Navbar
+          title="TextUtils"
+          about="About Us"
+          mode={mode}
+          toggleMode={toggleMode}
+          changeBackgroundColor={changeBackgroundColor}
+        />
+        <Alert alert={alert} />
+        <div className="container my-3">
+          <Routes>
+            <Route path="/about" element={<About mode={mode} />} />
+            <Route
+              path="/"
+              element={
+                <TextForm
+                  heading="Try TextUtils- Word Counter | Character Counter | Remove Extra Spaces"
+                  showAlert={showAlert}
+                  mode={mode}
+                />
+              }
+            />
+          </Routes>
+        </div>
+      </Router>
     </div>
   );
 }

@@ -6,7 +6,8 @@ function Alert(props) {
         return word1;
     };
   return (
-    props.alert && <div>
+    <div style={{height:'70px'}}>
+      {props.alert && <div>
       <div
         className={`alert alert-${props.alert.type} alert-dismissible fade show`}
         role="alert"
@@ -17,7 +18,9 @@ function Alert(props) {
         }
 
       </div>
+    </div>}
     </div>
+    
   );
 }
 

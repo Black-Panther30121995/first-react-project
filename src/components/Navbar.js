@@ -1,17 +1,18 @@
-// Navbar.js
 import React from "react";
 import PropTypes from "prop-types";
-/* import { Link } from "react-router-dom"; */
+import { Link } from "react-router-dom";
 
 export default function Navbar(props) {
   const colors = ["#452c63", "#720e9e", "#002D62", "#002244", "#007791"];
 
   return (
-    <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
+    <nav
+      className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
+    >
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <Link className="navbar-brand" to="/">
           {props.title}
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -26,20 +27,20 @@ export default function Navbar(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-{/*               <Link to="/" className="nav-link active" aria-current="page">
+              <Link to="/" className="nav-link active" aria-current="page">
                 Home
-              </Link> */}
-              <a href="#" className="nav-link active" aria-current="page">
+              </Link>
+              {/* <a href="#" className="nav-link active" aria-current="page">
                 Home
-              </a>
+              </a> */}
             </li>
-{/*             <li className="nav-item">
+            <li className="nav-item">
               <Link to="/about" className="nav-link">
                 {props.about}
               </Link>
-            </li> */}
+            </li>
           </ul>
-          <div className="d-flex align-items-center">
+          <div className="d-flex align-items-center mx-2">
             {colors.map((color) => (
               <button
                 key={color}
@@ -51,7 +52,11 @@ export default function Navbar(props) {
               ></button>
             ))}
           </div>
-          <div className={`form-check form-switch text-${props.mode === "light" ? "dark" : "light"}`}>
+          <div
+            className={`form-check form-switch text-${
+              props.mode === "light" ? "dark" : "light"
+            }`}
+          >
             <input
               className="form-check-input"
               type="checkbox"
@@ -59,7 +64,10 @@ export default function Navbar(props) {
               id="flexSwitchCheckDefault"
               onClick={props.toggleMode}
             />
-            <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
+            <label
+              className="form-check-label"
+              htmlFor="flexSwitchCheckDefault"
+            >
               Enable {props.mode === "light" ? "dark" : "light"} Mode
             </label>
           </div>

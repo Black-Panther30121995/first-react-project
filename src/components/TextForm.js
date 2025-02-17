@@ -62,7 +62,7 @@ export default function TextForm(props) {
   return (
     <>
     <div className={`container text-${props.mode==='light'?'dark':'light'}`} >
-      <h1>{props.heading}</h1>
+      <h1 className="mb-4">{props.heading}</h1>
       <div className="mb-3">
         <textarea
           className={`form-control text-${props.mode==='light'?'dark':'light'}`}
@@ -73,28 +73,29 @@ export default function TextForm(props) {
           style={{backgroundColor : props.mode==='light'?'white':'#36454F'}}
         ></textarea>
       </div>
-      <button className="btn btn-primary mx-1" onClick={handleUpClick}>
+      <button disabled={count()>0?false:true} className="btn btn-primary mx-1 my-1" onClick={handleUpClick}>
         Convert to Uppercase
       </button>
-      <button className="btn btn-primary mx-1" onClick={lowerC}>
+      <button disabled={count()>0?false:true} className="btn btn-primary mx-1 my-1" onClick={lowerC}>
         Convert to LowerCase
       </button>
-      <button className="btn btn-primary mx-1" onClick={del}>
+      <button disabled={count()>0?false:true} className="btn btn-primary mx-1 my-1" onClick={del}>
         Delete
       </button>
-      <button className="btn btn-primary mx-1" onClick={clear}>
+      <button disabled={count()>0?false:true} className="btn btn-primary mx-1 my-1" onClick={clear}>
         Clear
       </button>
-      <button className="btn btn-primary mx-1" onClick={handleExtraSpaces}>
+      <button disabled={count()>0?false:true} className="btn btn-primary mx-1 my-1" onClick={handleExtraSpaces}>
         Remove Extra Spaces
       </button>
     </div>
     <div className={`container text-${props.mode==='light'?'dark':'light'} my-4`}>
         <h2>Your Text Summary</h2>
         <p><b>{count()}</b> words and <b>{text.length}</b> characters and <b>{sentence()}</b> sentences</p>
-        <p>{0.008*text.split(/[ ]/).length} Minutes To Read</p>
+        <p>{0.008*count()} Minutes To Read</p>
         <h3>Preview</h3>
-        <p>{text}</p>
+        <p>{text.length>0?text:'Nothing to preview!!'}</p>
+
     </div>
     </>
   );
